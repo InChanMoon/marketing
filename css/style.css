@@ -120,12 +120,14 @@ nav {
 
 /* Hero Section */
 .hero {
-    background: var(--gradient-primary);
-    color: var(--white);
-    padding: 150px 0 100px;
-    text-align: center;
     position: relative;
+    color: var(--white);
+    padding: 200px 0 150px;
+    text-align: center;
     overflow: hidden;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
 }
 
 .hero::before {
@@ -135,28 +137,50 @@ nav {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
-    opacity: 0.3;
+    background: linear-gradient(135deg, rgba(30, 64, 175, 0.9) 0%, rgba(59, 130, 246, 0.85) 100%);
+    z-index: 1;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+}
+
+.hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
+    width: 100%;
 }
 
 .hero h1 {
     font-size: 3.5rem;
     font-weight: 800;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     animation: fadeInUp 0.8s ease;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .hero p {
-    font-size: 1.3rem;
-    margin-bottom: 2rem;
-    opacity: 0.95;
+    font-size: 1.4rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.98;
     animation: fadeInUp 0.8s ease 0.2s;
     animation-fill-mode: backwards;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hero-buttons {
@@ -263,11 +287,12 @@ section {
 }
 
 .service-card {
-    background: var(--light-color);
-    padding: 2.5rem;
+    background: var(--white);
     border-radius: 20px;
     transition: all 0.3s ease;
     border: 2px solid transparent;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
 }
 
 .service-card:hover {
@@ -276,16 +301,26 @@ section {
     border-color: var(--secondary-color);
 }
 
-.service-icon {
-    width: 80px;
-    height: 80px;
-    background: var(--gradient-primary);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-    font-size: 2rem;
+.service-image {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+}
+
+.service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-image img {
+    transform: scale(1.05);
+}
+
+.service-content {
+    padding: 2rem;
 }
 
 .service-card h3 {
@@ -333,11 +368,11 @@ section {
 
 .feature-item {
     text-align: center;
-    padding: 2rem;
     background: var(--white);
     border-radius: 15px;
     box-shadow: var(--shadow-sm);
     transition: all 0.3s ease;
+    overflow: hidden;
 }
 
 .feature-item:hover {
@@ -345,9 +380,25 @@ section {
     transform: translateY(-5px);
 }
 
-.feature-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+.feature-image {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+}
+
+.feature-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.feature-item:hover .feature-image img {
+    transform: scale(1.1);
+}
+
+.feature-content {
+    padding: 1.5rem;
 }
 
 .feature-item h3 {
@@ -357,6 +408,110 @@ section {
 }
 
 .feature-item p {
+    color: var(--gray-color);
+}
+
+/* Portfolio/Case Studies Section */
+.portfolio {
+    background: var(--white);
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.portfolio-item {
+    background: var(--light-color);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+}
+
+.portfolio-image {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    position: relative;
+}
+
+.portfolio-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover .portfolio-image img {
+    transform: scale(1.08);
+}
+
+.portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(30, 64, 175, 0.8) 0%, transparent 60%);
+    display: flex;
+    align-items: flex-end;
+    padding: 1.5rem;
+}
+
+.portfolio-tag {
+    background: var(--white);
+    color: var(--primary-color);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.portfolio-content {
+    padding: 1.5rem;
+}
+
+.portfolio-content h3 {
+    font-size: 1.3rem;
+    color: var(--dark-color);
+    margin-bottom: 0.8rem;
+}
+
+.portfolio-content p {
+    color: var(--gray-color);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.portfolio-stats {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.portfolio-stat {
+    flex: 1;
+    text-align: center;
+}
+
+.portfolio-stat-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.portfolio-stat-label {
+    font-size: 0.8rem;
     color: var(--gray-color);
 }
 
@@ -388,6 +543,83 @@ section {
     color: var(--white);
     transform: scale(1.05);
     box-shadow: var(--shadow-md);
+}
+
+/* About/Company Section */
+.about {
+    background: var(--light-color);
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-image {
+    width: 100%;
+    height: 450px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.about-content h3 {
+    font-size: 2rem;
+    color: var(--dark-color);
+    margin-bottom: 1.5rem;
+}
+
+.about-content p {
+    color: var(--gray-color);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.about-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.about-feature {
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+}
+
+.about-feature-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--gradient-primary);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.about-feature-content h4 {
+    font-size: 1.1rem;
+    color: var(--dark-color);
+    margin-bottom: 0.3rem;
+}
+
+.about-feature-content p {
+    font-size: 0.9rem;
+    color: var(--gray-color);
+    margin: 0;
 }
 
 /* Stats Section */
@@ -603,6 +835,11 @@ footer {
         transform: rotate(-45deg) translate(6px, -6px);
     }
 
+    .hero {
+        padding: 150px 0 100px;
+        min-height: 500px;
+    }
+
     .hero h1 {
         font-size: 2.5rem;
     }
@@ -620,14 +857,24 @@ footer {
         font-size: 2rem;
     }
 
-    .contact-container {
+    .contact-container,
+    .about-container {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
 
     .services-grid,
-    .features-grid {
+    .features-grid,
+    .portfolio-grid {
         grid-template-columns: 1fr;
+    }
+
+    .about-features {
+        grid-template-columns: 1fr;
+    }
+
+    .about-image {
+        height: 350px;
     }
 
     .industries-grid {
