@@ -1,0 +1,16 @@
+# 네이버 블로그 자동화 프로그램 필수 패키지
+
+# 봇 탐지 우회용 크롬 드라이버
+undetected-chromedriver>=3.5.4
+
+# 셀레니움
+selenium>=4.15.0
+
+# 복사/붙여넣기 기능
+pyperclip>=1.8.2
+
+# 환경 변수 관리
+python-dotenv>=1.0.0
+
+# 랜덤 지연 등을 위한 유틸리티
+fake-useragent>=1.4.0

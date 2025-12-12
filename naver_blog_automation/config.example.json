@@ -1,0 +1,51 @@
+{
+    "browser": {
+        "headless": false,
+        "incognito": true,
+        "window_size": "1920x1080"
+    },
+    "delays": {
+        "min_delay": 1.0,
+        "max_delay": 3.0,
+        "wait_after_login": 5,
+        "wait_after_publish": 10
+    },
+    "content_generation": {
+        "mode": "manual",
+        "api_provider": null,
+        "api_key": null,
+        "options": {
+            "ai_keyword": {
+                "enabled": false,
+                "keywords": []
+            },
+            "ai_custom": {
+                "enabled": false,
+                "custom_prompt": ""
+            },
+            "user_content": {
+                "enabled": true,
+                "content_file": "posts.json"
+            }
+        }
+    },
+    "ip_rotation": {
+        "enabled": false,
+        "method": null,
+        "options": {
+            "android_phone": {
+                "enabled": false,
+                "adb_device_id": null
+            },
+            "proxy_service": {
+                "enabled": false,
+                "proxy_list": []
+            }
+        }
+    },
+    "logging": {
+        "enabled": true,
+        "log_file": "naver_blog_bot.log",
+        "level": "INFO"
+    }
+}
